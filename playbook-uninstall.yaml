@@ -6,3 +6,7 @@
       apt:
         name: nginx
         state: absent
+    - name: Uninstall nginx configuration
+      file:
+        path: /etc/nginx/nginx.conf
+        state: absent
