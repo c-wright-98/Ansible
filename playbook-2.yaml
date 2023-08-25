@@ -4,6 +4,6 @@
       ping:
       register: ping_info
 
-  - name: "Show ping_info in console"
-    debug:
-      msg: "{{ ping_info }}"
+    - name: "Show ping_info in console"
+      debug:
+        msg: "{{ ping_info }}"
