@@ -1,0 +1,9 @@
+all:
+  children:
+    test:
+      hosts:
+        18.132.45.243:
+        13.41.158.255:
+      vars:
+        ansible_user: ubuntu
+        ansible_ssh_private_key_file: "~/.ssh/ansible_id_rsa"

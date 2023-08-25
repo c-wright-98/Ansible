@@ -1,0 +1,8 @@
+- hosts: test
+  tasks:
+    - name: "Ping {{inventory_hostname}}"
+      ping:
+
+  - name: "Show ping_info in console"
+    debug:
+      msg: "{{ ping_info }}"
