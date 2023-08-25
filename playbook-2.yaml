@@ -2,6 +2,7 @@
   tasks:
     - name: "Ping"
       ping:
+      register: ping_info
 
   - name: "Show ping_info in console"
     debug:
