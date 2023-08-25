@@ -7,31 +7,25 @@
         name: nginx
         state: present
         update_cache: true
+        cache_valid_time: 300
+      register: installingnginx
+      # failed_when: installingnginx.cache_update_time > 1
+      # Always going to be greater then 0
 
     - name: Copy nginx file over
-        copy:
-          src: nginx.conf
-          dest: /etc/nginx/nginx.conf
-        register: nginx_config
+      copy:
+        src: nginx.conf
+        dest: /etc/nginx/nginx.conf
+      register: nginx_config
+      # failed_when: nginx_config.diff.after.path == nginx_config.diff.before.path
 
-      - name: Restart nginx if needed
-        service:
-          name: nginx
-          state: restarted
-        when: nginx_config.changed == true
+    - name: print nginx configuration
+      debug:
+        var: nginx_config
+        verbosity: 1
 
-      - name: Display nginx configuration copy info
-        debug:
-          var: nginx_config
-
-      - name: Fail task if paths are the same
-        fail:
-          msg: "Source and destination paths are the same"
-        when: nginx_config.src == nginx_config.dest
-
-      - name: Run task if paths are the same
-        copy:
-          src: nginx.conf
-          dest: /etc/nginx/nginx.conf
-        register: nginx_config
-        when: nginx_config.src == nginx_config.dest
+    - name: Restart nginx if needed
+      service:
+        name: nginx
+        state: restarted
+      when: nginx_config.changed == true
