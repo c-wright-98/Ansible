@@ -28,3 +28,10 @@
         fail:
           msg: "Source and destination paths are the same"
         when: nginx_config.src == nginx_config.dest
+
+      - name: Run task if paths are the same
+        copy:
+          src: nginx.conf
+          dest: /etc/nginx/nginx.conf
+        register: nginx_config
+        when: nginx_config.src == nginx_config.dest
