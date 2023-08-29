@@ -2,7 +2,7 @@ all:
   children:
     test:
       hosts:
-        18.132.45.243:
+        13.43.136.100:
         13.41.158.255:
       vars:
         ansible_user: ubuntu
