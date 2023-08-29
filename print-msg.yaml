@@ -1,0 +1,6 @@
+host: localhost
+tasks:
+  name: print message
+  debug:
+    msg: "Hello :D"
+  when: ansible_distribution = Ubun
