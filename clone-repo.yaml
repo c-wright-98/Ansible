@@ -1,0 +1,4 @@
+host: localhost
+task: Clone Repository
+  git:
+  repo: https://github.com/c-wright-98/Ansible.git
