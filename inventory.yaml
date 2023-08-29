@@ -3,7 +3,7 @@ all:
     test:
       hosts:
         13.43.136.100:
-        13.41.158.255:
+        3.8.151.175:
       vars:
         ansible_user: ubuntu
         ansible_ssh_private_key_file: "~/.ssh/ansible.pem"
