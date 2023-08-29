@@ -1,0 +1,7 @@
+host: localhost
+vars:
+  ip_address: "{{ ansible_host }}"
+tasks:
+  name: Create IP
+  copy:
+    content: "{{ ip_address }}"
